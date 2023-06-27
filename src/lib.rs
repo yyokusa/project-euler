@@ -12,20 +12,24 @@ pub mod multiples {
         println!("result: {:?}", result);
     }
 }
-
+//       c n n  c  n  n  c  n  n  c  n  n  c  n  n 
+// 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610
 pub mod fibonacci {
-    fn fibonacci(n: u32, memo: &mut Vec<u64>) -> u64 {
-        let mut i = 2;
-        while memo[memo.len() - 1] < n as u64 {
-            memo.push(memo[i as usize - 1] + memo[i as usize - 2]);
-            i += 1;
+    fn fibonacci(n: u32) -> u32 {
+        let mut sum  = 0;
+        let mut a = 1;
+        let mut b = 1;
+        let mut c = a + b;
+        while c < n {
+            sum += c;
+            a = b + c;
+            b = c + a;
+            c = a + b;
         }
-        // sum evens
-        return memo.iter().filter(|&x| x % 2 == 0).sum();
+        sum
     }
     pub fn solve_problem_02() {
-        let mut memo: Vec<u64> = vec![1, 2];
-        let result = fibonacci(4_000_000, &mut memo);
+        let result = fibonacci(10);
         println!("result: {:?}", result);
     }
 }
