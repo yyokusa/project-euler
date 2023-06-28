@@ -12,8 +12,7 @@ pub mod multiples {
         println!("result: {:?}", result);
     }
 }
-//       c n n  c  n  n  c  n  n  c  n  n  c  n  n 
-// 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610
+
 pub mod fibonacci {
     fn fibonacci(n: u32) -> u32 {
         let mut sum  = 0;
@@ -30,6 +29,26 @@ pub mod fibonacci {
     }
     pub fn solve_problem_02() {
         let result = fibonacci(10);
+        println!("result: {:?}", result);
+    }
+}
+
+pub mod largest_prime_factor {
+    fn largest_prime_factor(n: &mut u64) -> u64 {
+        let mut i = 2;
+        while i * i <= *n {
+            if *n % i == 0 {
+                *n /= i;
+            } else {
+                i += 1;
+            }
+        }
+        *n
+    }
+
+    pub fn solve_problem_03() {
+        let mut number = 600851475143;
+        let result = largest_prime_factor(&mut number);
         println!("result: {:?}", result);
     }
 }
