@@ -52,3 +52,27 @@ pub mod largest_prime_factor {
         println!("result: {:?}", result);
     }
 }
+
+pub mod sum_square_difference {
+    fn sum_square_difference_naive(n: u64) -> u64 {
+        let a = (1..=n)
+            .map(|x| x.pow(2))
+            .sum::<u64>();
+        println!("a: {:?}", a);
+        let b = (1..=n).sum::<u64>().pow(2);
+        println!("b: {:?}", b);
+        b - a
+    }
+    
+    fn sum_square_difference(n: u64) -> u64 {
+        let a = n * (n + 1) / 2;
+        let b = (2 * n + 1) * (n + 1) * n / 6;
+        a.pow(2) - b
+    }
+
+    pub fn solve_problem_04() {
+        let number = 100;
+        let result = sum_square_difference(number);
+        println!("result: {:?}", result);
+    }
+}
