@@ -76,3 +76,30 @@ pub mod sum_square_difference {
         println!("result: {:?}", result);
     }
 }
+
+pub mod smallest_multiple {
+
+    fn smallest_multiple(n: u64) -> u64 {
+        let mut factors: Vec<u64> = Vec::new();
+        for i in 2..=n {
+            let mut j = i;
+            // want to divide j until there is no divisor of it
+            for elem in factors.as_slice() {
+                if j % elem == 0 {
+                    j /= elem;
+                }
+            }
+            if j != 1 {
+                factors.push(j);
+            }
+        }
+        factors.into_iter().fold(1, |acc, x| acc * x)
+    }
+
+    pub fn solve_problem_05() {
+        let number = 20;
+        let result = smallest_multiple(number);
+        println!("result: {:?}", result);
+    }
+}
+
